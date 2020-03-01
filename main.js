@@ -8,6 +8,7 @@ bot.on("ready", () => {
     console.log(`Longing as ${bot.user.tag} => (${bot.user.id}) on ${bot.guilds.size} servers`)
 })
 
+
    
 
 
