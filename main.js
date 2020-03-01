@@ -929,7 +929,7 @@ var answer = ['It is certain',
            
         let result = Math.floor((Math.random() * replyies.length));
        
-     return   message.channel.send(result);
+     return   message.channel.send(replyies[result]);
     
     }
 if(message.content.startsWith('!event')){
