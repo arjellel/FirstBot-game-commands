@@ -823,7 +823,7 @@ console.log(money)
 
 if(message.content.startsWith(PREFIX + "avatar") || message.content.startsWith(PREFIX + "av")){
    if(message.author.id === "393376407247519754") {  
-return   message.channel.send('shko mr');
+return   message.channel.send('shko mr pall');
 }
     let mem = message.mentions.users.first() || message.author;
     
