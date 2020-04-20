@@ -930,445 +930,445 @@ var answer = ['It is certain',
      return   message.channel.send(replyies[result]);
     
     }
-if(message.content.startsWith('!event')){
-    message.delete(2000);
-    db.set(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`, Date.now())//call the coins data now
-    db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0) //qe mos te bej multiply call
-    db.set(`channel@event@call${message.guild.id}_${message.channel.id}`, message.channel.id)  //to call it on the smae channel
+// if(message.content.startsWith('!event')){
+//     message.delete(2000);
+//     db.set(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`, Date.now())//call the coins data now
+//     db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0) //qe mos te bej multiply call
+//     db.set(`channel@event@call${message.guild.id}_${message.channel.id}`, message.channel.id)  //to call it on the smae channel
     
   
-    msg.channel.send('Call `10min` `1h` `2h` `3h` `5h` `10h` `24h` to set the time of the event end. \n I will give up on 10 seconds.').then( m => {
+//     msg.channel.send('Call `10min` `1h` `2h` `3h` `5h` `10h` `24h` to set the time of the event end. \n I will give up on 10 seconds.').then( m => {
        
-            m.delete(10000)
+//             m.delete(10000)
         
-        });
- }
- if(message.content === '10min'){
+//         });
+//  }
+//  if(message.content === '10min'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 600000
+//     let eventovertime = 600000
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '1h'){
+// return;
+//  }
+// 	 if(message.content === '1h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000
+//     let eventovertime = 3600000
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '2h'){
+// return;
+//  }
+// 	 if(message.content === '2h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000*2
+//     let eventovertime = 3600000*2
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '3h'){
+// return;
+//  }
+// 	 if(message.content === '3h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000*3
+//     let eventovertime = 3600000*3
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '10h'){
+// return;
+//  }
+// 	 if(message.content === '10h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000*10
+//     let eventovertime = 3600000*10
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '24h'){
+// return;
+//  }
+// 	 if(message.content === '24h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000*24
+//     let eventovertime = 3600000*24
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
-	 if(message.content === '5h'){
+// return;
+//  }
+// 	 if(message.content === '5h'){
     
-    let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
+//     let ischannelhere =  db.fetch(`channel@event@call${message.guild.id}_${message.channel.id}`)
 
-    if(message.channel.id !== ischannelhere) {
-        return; 
-    }
+//     if(message.channel.id !== ischannelhere) {
+//         return; 
+//     }
 
-    let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
-    if(callonse === 1){
-        return;
-    }
-    let timeoutcall = 10000
+//     let callonse = db.get(`Event@call@onse_${message.guild.id}_${message.channel.send}`)
+//     if(callonse === 1){
+//         return;
+//     }
+//     let timeoutcall = 10000
     
-    let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
+//     let Datathencall = db.fetch(`Event@Date@now@time@set_${message.guild.id}_${message.channel}`)
   
-    if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
-        message.delete(2000);
+//     if(Datathencall !== null && timeoutcall - (Date.now() - Datathencall) > 0){
+//         message.delete(2000);
 
-    let eventovertime = 3600000*5
+//     let eventovertime = 3600000*5
    
-    db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
-    let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
+//     db.set(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`, Date.now()) // koha tani
+//     let Datathenevent = db.get(`Event@Date@now@time@start_${message.guild.id}_${message.channel}`) // koha tani
 
-    var time = ms(eventovertime - (Date.now() - Datathenevent));
+//     var time = ms(eventovertime - (Date.now() - Datathenevent));
     
-    let embed1 = new Discord.RichEmbed()
-    .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
-    .setColor('RANDOM')
-    message.channel.send(embed1).then(() => {
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
+//     let embed1 = new Discord.RichEmbed()
+//     .setDescription(`Event timeout **${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
+//     .setColor('RANDOM')
+//     message.channel.send(embed1).then(() => {
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, message.channel.id) // qe mos te ngatroj serverin
         
-        db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
+//         db.add(`channel@member@event_${message.guild.id}_${message.channel.id}`, 1) // per qe te qoj vetem 1 mesazh everyone
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 1) // event call vetem 1 here 
 
-    })
+//     })
   
-    message.channel.send('**Everyone can send only one comment!!**').then(m => {
-        setTimeout(() => {
+//     message.channel.send('**Everyone can send only one comment!!**').then(m => {
+//         setTimeout(() => {
             
-        let embed = new Discord.RichEmbed()
+//         let embed = new Discord.RichEmbed()
 
-        .setDescription(`**Event over**`)
-        .setColor('RANDOM')
-        m.channel.send(embed)
-        db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
-        db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
+//         .setDescription(`**Event over**`)
+//         .setColor('RANDOM')
+//         m.channel.send(embed)
+//         db.set(`Event@call@onse_${message.guild.id}_${message.channel.send}`, 0)  
+//         db.set(`event@channel@id_${message.channel.id}_${message.channel.id}`, 0)
       
-    }, eventovertime)
-    })
+//     }, eventovertime)
+//     })
       
   
-    }
+//     }
    
     
-return;
- }
- if(message){
+// return;
+//  }
+//  if(message){
 
-    let eventchannelid =  db.fetch(`event@channel@id_${message.channel.id}_${message.channel.id}`) 
+//     let eventchannelid =  db.fetch(`event@channel@id_${message.channel.id}_${message.channel.id}`) 
     
-    if(eventchannelid === null) eventchannelid = 0
+//     if(eventchannelid === null) eventchannelid = 0
     
-    if(message.channel.id !== eventchannelid){
-        return;
-    }
+//     if(message.channel.id !== eventchannelid){
+//         return;
+//     }
    
-    let memberevent = db.fetch(`member@message@event_${message.guild.id}_${message.author.id}`)
-    let channelevent = db.fetch(`channel@member@event_${message.guild.id}_${message.channel.id}`)
+//     let memberevent = db.fetch(`member@message@event_${message.guild.id}_${message.author.id}`)
+//     let channelevent = db.fetch(`channel@member@event_${message.guild.id}_${message.channel.id}`)
     
-    if(memberevent === null) memberevent = 0
+//     if(memberevent === null) memberevent = 0
     
-    if(memberevent === channelevent){
-        message.delete().catch(O_o=>{});
+//     if(memberevent === channelevent){
+//         message.delete().catch(O_o=>{});
        
-    }
-    if(memberevent < channelevent){
-     let msgeventmember = channelevent - memberevent
+//     }
+//     if(memberevent < channelevent){
+//      let msgeventmember = channelevent - memberevent
 
-     db.add(`member@message@event_${message.guild.id}_${message.author.id}`, msgeventmember)
-        return;
-    }
+//      db.add(`member@message@event_${message.guild.id}_${message.author.id}`, msgeventmember)
+//         return;
+//     }
  
- }
+//  }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 if(msg.author.bot) return;
 console.log(
