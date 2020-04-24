@@ -6,6 +6,7 @@ const PREFIX = "!"
 const color = "#e600e6"
 bot.on("ready", () => {
     console.log(`Longing as ${bot.user.tag} => (${bot.user.id}) on ${bot.guilds.size} servers`)
+	  bot.user.setActivity("!help", { type: "STREAMING", url: "https://www.twitch.tv/something" })
 })
 
 
