@@ -21,8 +21,8 @@ const command = args.shift().toLowerCase()
 if(message.content === "!ava"){
 message.channel.send(message.author.displayAvatarURL)
 }
-const checkemoji = bot.guilds.get('649614795087020032').emojis.get('655742726004015104')    
-const xemoji = bot.guilds.get('649614795087020032').emojis.get('655758872035721216')    
+const checkemoji = "✅"
+const xemoji =  "❎"
 
    if(msg.content === ( PREFIX + 'help mod') || msg.content === ( PREFIX + 'help moderation')){
     let embed = new Discord.RichEmbed()
